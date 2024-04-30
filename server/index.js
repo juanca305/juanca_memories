@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js'
+
 //Initialize express app
 const app = express();
 
@@ -11,6 +13,10 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
+
+app.use('/post', postRoutes);
+app.use('/createPost', postRoutes);
+
 
 app.get('/', async (req, res) => {
     res.send("Hello from Memories!. Server successfully connected to DB");
