@@ -8,10 +8,15 @@ import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import useStyles from './styles';
 
-function App() {
-  const [currentId, setCurrentId] = useState(null)
-  const classes = useStyles();
+// function App() {
+//   const [currentId, setCurrentId] = useState(null)
+//   const classes = useStyles();
+//   const dispatch = useDispatch();
+
+const App = () => {
+  const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
    dispatch(getPosts());
