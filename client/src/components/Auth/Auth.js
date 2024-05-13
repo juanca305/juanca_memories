@@ -21,6 +21,9 @@ import { useDispatch } from "react-redux";
 // @ts-ignore
 import  {useHistory } from 'react-router-dom';
 
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { createOrGetUser } from '../../utils';
+
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
@@ -29,13 +32,7 @@ const Auth = () => {
   const state = null;
   const history = useHistory();
   const clientId = "323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com";
-  //const isSignup = true;
-
-  // useEffect(() => {
-  //   gapi.load("client:auth2", () => {
-  //     gapi.auth2.init({clientId: clientId})
-  //   })
-  // }, []);
+  
 
   const handleShowPassword = () => {setShowPassword((prevShowPassword) => !prevShowPassword)};
 
@@ -47,25 +44,6 @@ const Auth = () => {
   const switchMode = () => {
     setIsSignup((prevIsSignUp) => !prevIsSignUp);
     handleShowPassword(false);
-  };
-
-  const googleSuccess = async (/** @type {any} */ res) => {
-    console.log(res);
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-
-    try {
-      dispatch({ type: "AUTH", data: { result, token }});
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const googleFailure = (error) => {   
-        console.log("Google Sign In was unsuccessful. Try again later");    
-        console.log(error);
-   
   };
 
   return (
@@ -139,6 +117,15 @@ const Auth = () => {
             onFailure={googleFailure}
             cookiePolicy="single_host_origin"
           /> */}
+
+          <GoogleLogin
+              onSuccess={(response) => {
+                createOrGetUser(response);
+                history.push('/');
+                
+              }} 
+              onError={() => console.log('Error')}
+          />
 
           <Grid container justifyContent="flex-end">
             <Grid item>
