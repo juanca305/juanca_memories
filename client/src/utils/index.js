@@ -3,7 +3,7 @@ import {jwtDecode} from 'jwt-decode';
 
 
 export const createOrGetUser = async (response) => {
-    
+    console.log('RESPONSE FROM UTILS', response);
     const decoded = jwtDecode(response.credential) ;
     const { name, picture, sub, given_name } = decoded;
 
@@ -15,11 +15,11 @@ export const createOrGetUser = async (response) => {
         given_name: given_name
     }
 
-     console.log('DECODED FROM UTILS', decoded);
-     console.log('USER FROM UTILS', user);
+     //console.log('DECODED FROM UTILS', decoded);
+    // console.log('USER FROM UTILS', user);
     //await axios.post(`http://localhost:3000/api/auth`, user);
-   
-    localStorage.setItem('user', JSON.stringify(user));
+    
+    //localStorage.setItem('user', JSON.stringify(user));
    
      return user;
 }

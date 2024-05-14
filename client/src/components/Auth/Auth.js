@@ -23,6 +23,7 @@ import  {useHistory } from 'react-router-dom';
 
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { createOrGetUser } from '../../utils';
+import {jwtDecode} from 'jwt-decode';
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,10 +47,23 @@ const Auth = () => {
     handleShowPassword(false);
   };
 
-  const onSuccess = (response) => {
-    createOrGetUser(response);
-    history.push('/');
-    
+  const onSuccess = async (response) => {
+    console.log('RESPONSE FROM AUTH', response);
+    //const result = await createOrGetUser(response);
+  
+    const token = await response.credential;
+    const result = jwtDecode(response.credential) ;
+    console.log('RESULT FROM AUTH', result);
+    console.log('TOKEN FROM AUTH', token);
+    console.log('RESULT DATA FROM AUTH', result.given_name);
+    //history.push('/');
+
+    try {
+      dispatch({ type: 'AUTH', data: {result, token}});
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

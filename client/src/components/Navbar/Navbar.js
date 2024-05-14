@@ -12,8 +12,9 @@ import useStyles from "./styles";
 
 
 const Navbar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
- 
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')) || null);
+  console.log('USER FROM NAVBAR', user);
+
   // useEffect(() => {
   //    setUser(JSON.parse(localStorage.getItem('user')));
   // }, []);
@@ -27,17 +28,17 @@ const Navbar = () => {
    console.log('USER FROM LOCALSTORAGE', user);
 
   const logout = () => {
-    dispatch({ type: actionType.LOGOUT});
-    history.push('/auth');
+    dispatch({ type: 'LOGOUT'});
+    history.push('/');
     setUser(null);
   }
 
-  // useEffect(() => {
-  //  const token = user?.token;
+  useEffect(() => {
+   const token = user?.token;
 
-  //  //JWT...
-  //  setUser(JSON.parse(localStorage.getItem('profile')))
-  // }, [location]);
+   //JWT...
+   setUser(JSON.parse(localStorage.getItem('profile')))
+  }, [location]);
 
 
   return (
@@ -59,12 +60,12 @@ const Navbar = () => {
               //<div>Logged In</div>
 
                 <div className={classes.profile}>
-                    <Avatar className={classes.purple} alt={user?.given_name} src={user?.image}>
-                        {user?.given_name.charAt(0)}
+                    <Avatar className={classes.purple} alt={user?.result.given_name} src={user?.result.picture}>
+                        {user?.result.given_name.charAt(0)}
                         
                     </Avatar>
                     <Typography className={classes.userName} variant="h6">
-                        {user?.given_name}
+                        {user?.result.given_name}
                         
                     </Typography>
                     <Button variant='contained' className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
