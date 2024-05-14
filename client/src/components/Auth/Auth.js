@@ -46,6 +46,12 @@ const Auth = () => {
     handleShowPassword(false);
   };
 
+  const onSuccess = (response) => {
+    createOrGetUser(response);
+    history.push('/');
+    
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -119,11 +125,7 @@ const Auth = () => {
           /> */}
 
           <GoogleLogin
-              onSuccess={(response) => {
-                createOrGetUser(response);
-                history.push('/');
-                
-              }} 
+              onSuccess={onSuccess} 
               onError={() => console.log('Error')}
           />
 

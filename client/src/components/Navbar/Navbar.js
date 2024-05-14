@@ -12,11 +12,11 @@ import useStyles from "./styles";
 
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
  
-  useEffect(() => {
-     setUser(JSON.parse(localStorage.getItem('user')));
-  }, []);
+  // useEffect(() => {
+  //    setUser(JSON.parse(localStorage.getItem('user')));
+  // }, []);
   
    const classes = useStyles();
    
