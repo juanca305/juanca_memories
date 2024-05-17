@@ -4,6 +4,7 @@ const auth = async (req, res, next) => {
     //Do something and then move to the next thing.
 
     try {
+        console.log('req.headers', req.headers);
         //Here I have to see if the user is really who he is claimming to be.
         const token = req.headers.authorization.split(" ")[1];
 

@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
+//Something specific to each one of our requests.
+//Send the token to the backend. The backend can verify that the user is logged in.
+API.interceptors.request.use((req) => {
+    if(localStorage.getItem('profile')) {
+        //The token needs to start with the word 'Bearer'.
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+    return req;
+});
+
 //const url = 'http://localhost:5000/posts';
 
 export const fetchPosts = () => API.get('/posts');
