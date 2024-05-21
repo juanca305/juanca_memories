@@ -22,12 +22,16 @@ import { useDispatch } from "react-redux";
 import  {useHistory } from 'react-router-dom';
 
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
-
+//import { createOrGetUser } from '../../utils';
 import {jwtDecode} from 'jwt-decode';
+import { signin, signup } from '../../actions/auth';
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const classes = useStyles();
   const state = null;
@@ -37,10 +41,22 @@ const Auth = () => {
 
   const handleShowPassword = () => {setShowPassword((prevShowPassword) => !prevShowPassword)};
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('FORM_DATA', formData);
 
-  const handleChange = () =>
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    if (isSignup) {
+      dispatch(signup(formData, history))
+    } else {
+      dispatch(signin(formData, history))
+    }
+  };
+
+  const handleChange = (e) => {
+    //setShowPassword((prevShowPassword) => !prevShowPassword);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+    
 
   const switchMode = () => {
     setIsSignup((prevIsSignUp) => !prevIsSignUp);

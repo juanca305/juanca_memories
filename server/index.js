@@ -4,7 +4,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import postRoutes from './routes/posts.js'
+import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 //Initialize express app
 const app = express();
@@ -18,7 +19,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use('/createPost', postRoutes);
-
+app.use('/user', userRoutes);
 
 app.get('/', async (req, res) => {
     res.send("Hello from Memories!. Server successfully connected to DB");
