@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../actions/posts";
 
+
+
 //Get the current id of the Post we are on
 
 const Form = ({ currentId, setCurrentId }) => {
   
+
   const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null );
   const [postData, setPostData] = useState({
     title: "",
@@ -24,29 +27,44 @@ const Form = ({ currentId, setCurrentId }) => {
 
   useEffect(() => {
      if (post) setPostData(post);
-    
+    console.log('POST', post)
   }, [post]);
   
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if(currentId) {
+  //     dispatch(updatePost(currentId, {...postData, name: user?.result?.name}));
+     
+     
+  //     //dispatch(updatePost({id:currentId, post:postData}))
+  //   } else {
+  //      dispatch(createPost({...postData, name: user?.result?.name}));
+  //   }
+  //   clear();
+  //   // if (currentId === 0) {
+  //   //   dispatch(createPost(postData));
+  //   //   clear();
+  //   // } else {
+  //   //   dispatch(updatePost(currentId, postData));
+  //   //   clear();
+  //   // }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(currentId) {
-      dispatch(updatePost(currentId, {...postData, name: user?.result?.name }));
-     
-      //dispatch(updatePost({id:currentId, post:postData}))
+    if (currentId === 0) {
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      clear();
     } else {
-       dispatch(createPost({...postData, name: user?.result?.name}));
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      clear();
     }
-    clear();
-    // if (currentId === 0) {
-    //   dispatch(createPost(postData));
-    //   clear();
-    // } else {
-    //   dispatch(updatePost(currentId, postData));
-    //   clear();
-    // }
+    
   };
+
 
 
   const clear = () => {

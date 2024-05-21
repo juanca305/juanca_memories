@@ -11,9 +11,9 @@ const Home = () => {
   const dispatch = useDispatch();
   //const classes = useStyles();
 
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [currentId, dispatch]);
+  useEffect(() => { 
+     dispatch(getPosts());  
+  }, [dispatch, currentId]);
 
   return (
     <Grow in>
