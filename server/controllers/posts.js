@@ -13,6 +13,21 @@ export const getPosts = async (req, res) => {
     }
 };
 
+export const getPostsBySearch = async (req, res) => {
+    const { searchQuery, tags } = req.query
+    try {
+        //We converted it in a reg expression because it's easier for mongodb and mongoose to search the database
+        const title = new RegExp(searchQuery, 'i'); // TEST test (gonna be the same)
+
+        // Find to me all the posts that match one of those two criteria. The first one is the title and the second one is
+        //one of the tags in the array of tags equal to our tag.
+        const posts = await PostMessage.find({ $or: [{ title }, { tags: { $in: tags.split(',') }}]});
+        res.json({ data: posts });
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+}
+
 // https://www.restapitutorial.com/httpstatuscodes.html
 
 export const createPosts = async (req, res) => {
