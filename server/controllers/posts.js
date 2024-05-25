@@ -4,10 +4,14 @@ import PostMessage from "../models/postMessage.js";
 //Each callback function is going to have a try catch block
 export const getPosts = async (req, res) => {
     //res.send('THIS WORKS');
+    const { page } = req.query;
     try {
-        const postMessages = await PostMessage.find();
+        const LIMIT = 8;
+        const startIndex = (Number(page) - 1) * LIMIT;  //Get the starting index of every page
+        const total = await PostMessage.countDocuments({});
+        const posts = await PostMessage.find().sort({ _id: -1}).limit(LIMIT).skip(startIndex);
         //console.log(postMessages);
-        res.status(200).json(postMessages)
+        res.status(200).json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)})
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
