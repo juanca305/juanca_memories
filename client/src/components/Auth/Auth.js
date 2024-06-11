@@ -1,5 +1,4 @@
-// @ts-nocheck
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
@@ -7,26 +6,24 @@ import {
   Grid,
   Typography,
   Container,
-  TextField,
 } from "@material-ui/core";
-//import { GoogleLogin } from "react-google-login";
-//import icon from "./icon";
-//import { GoogleOauthProvider } from '@react-oauth/google';
-import Icon from './icon';
+import Icon from "./icon";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
-//import { gapi } from 'gapi-script';
 import { useDispatch } from "react-redux";
-// @ts-ignore
-import  {useHistory } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
-//import { createOrGetUser } from '../../utils';
-import {jwtDecode} from 'jwt-decode';
-import { signin, signup } from '../../actions/auth';
+import { jwtDecode } from "jwt-decode";
+import { signin, signup } from "../../actions/auth";
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,27 +33,27 @@ const Auth = () => {
   const classes = useStyles();
   const state = null;
   const history = useHistory();
-  const clientId = "323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com";
-  
+  // const clientId =
+  //   "323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com";
 
-  const handleShowPassword = () => {setShowPassword((prevShowPassword) => !prevShowPassword)};
+  const handleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('FORM_DATA', formData);
+    console.log("FORM_DATA", formData);
 
     if (isSignup) {
-      dispatch(signup(formData, history))
+      dispatch(signup(formData, history));
     } else {
-      dispatch(signin(formData, history))
+      dispatch(signin(formData, history));
     }
   };
 
   const handleChange = (e) => {
-    //setShowPassword((prevShowPassword) => !prevShowPassword);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
-    
+  };
 
   const switchMode = () => {
     setIsSignup((prevIsSignUp) => !prevIsSignUp);
@@ -64,23 +61,23 @@ const Auth = () => {
   };
 
   const onSuccess = async (response) => {
-    console.log('RESPONSE FROM AUTH', response);
+    console.log("RESPONSE FROM AUTH", response);
     //const result = await createOrGetUser(response);
-  
+
     const token = await response.credential;
-    const result = jwtDecode(response.credential) ;
-    console.log('RESULT FROM AUTH', result);
-    console.log('TOKEN FROM AUTH', token);
-    console.log('RESULT DATA FROM AUTH', result.given_name);
+    const result = jwtDecode(response.credential);
+    console.log("RESULT FROM AUTH", result);
+    console.log("TOKEN FROM AUTH", token);
+    console.log("RESULT DATA FROM AUTH", result.given_name);
     //history.push('/');
 
     try {
-      dispatch({ type: 'AUTH', data: {result, token}});
-      history.push('/');
+      dispatch({ type: "AUTH", data: { result, token } });
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -131,7 +128,7 @@ const Auth = () => {
               />
             )}
           </Grid>
-          
+
           <Button
             type="submit"
             fullWidth
@@ -142,21 +139,9 @@ const Auth = () => {
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
 
-          {/* <GoogleLogin
-            clientId={clientId}
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy="single_host_origin"
-          /> */}
-
           <GoogleLogin
-              onSuccess={onSuccess} 
-              onError={() => console.log('Error')}
+            onSuccess={onSuccess}
+            onError={() => console.log("Error")}
           />
 
           <Grid container justifyContent="flex-end">

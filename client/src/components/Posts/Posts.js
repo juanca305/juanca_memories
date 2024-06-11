@@ -1,5 +1,5 @@
 import React, { useEffect} from "react";
-import { Grid, CircularProgress } from "@material-ui/core";
+import { Grid, CircularProgress, Divider } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import Post from "./Post/Post";
 import useStyles from './styles';
@@ -26,4 +26,7 @@ const Posts = ({ setCurrentId }) => {
     );
 }
 
+
+
 export default Posts;
+

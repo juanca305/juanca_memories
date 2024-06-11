@@ -1,46 +1,3 @@
-// import { makeStyles } from '@material-ui/core/styles';
-// import { deepPurple } from '@material-ui/core/colors';
-
-// export default makeStyles((theme) => ({
-//   appBar: {
-//     borderRadius: 15,
-//     margin: '30px 0',
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     padding: '10px 50px',
-//   },
-//   heading: {
-//     color: 'rgba(0,183,255, 1)',
-//     textDecoration: 'none',
-//   },
-//   image: {
-//     marginLeft: '15px',
-//   },
-//   toolbar: {
-//     display: 'flex',
-//     justifyContent: 'flex-end',
-//     width: '400px',
-//   },
-//   profile: {
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//     width: '400px',
-//   },
-//   userName: {
-//     display: 'flex',
-//     alignItems: 'center',
-//   },
-//   brandContainer: {
-//     display: 'flex',
-//     alignItems: 'center',
-//   },
-//   purple: {
-//     color: theme.palette.getContrastText(deepPurple[500]),
-//     backgroundColor: deepPurple[500],
-//   },
-// }));
 
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
@@ -54,7 +11,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
     },
   },
@@ -79,26 +36,37 @@ export default makeStyles((theme) => ({
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
+    width: 'auto',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
-      marginTop: 20,
-      justifyContent: 'center',
+      margin: '20px 0 20px 0',
     },
   },
   logout: {
     marginLeft: '20px',
+    [theme.breakpoints.down('sm')]: {
+     fontSize: '12px',
+     fontWeight: 'bold',
+     padding: '10px 20px'
+    },
   },
   userName: {
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+    marginLeft: '14px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '16px',
+      margin: '10px'
+    },
   },
+
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
   },
+
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
