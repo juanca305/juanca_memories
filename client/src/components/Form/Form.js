@@ -33,27 +33,6 @@ const Form = ({ currentId, setCurrentId }) => {
   }, [post]);
   
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   if(currentId) {
-  //     dispatch(updatePost(currentId, {...postData, name: user?.result?.name}));
-     
-     
-  //     //dispatch(updatePost({id:currentId, post:postData}))
-  //   } else {
-  //      dispatch(createPost({...postData, name: user?.result?.name}));
-  //   }
-  //   clear();
-  //   // if (currentId === 0) {
-  //   //   dispatch(createPost(postData));
-  //   //   clear();
-  //   // } else {
-  //   //   dispatch(updatePost(currentId, postData));
-  //   //   clear();
-  //   // }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,8 +46,6 @@ const Form = ({ currentId, setCurrentId }) => {
     }
     
   };
-
-
 
   const clear = () => {
     setCurrentId(null);
@@ -99,16 +76,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">{currentId ? 'Editing' : "Creating" } a Memory</Typography>
-        {/* <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        /> */}
+       
         <TextField
           name="title"
           variant="outlined"

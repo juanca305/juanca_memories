@@ -174,7 +174,7 @@ const PostDetails = () => {
                   <Divider />
                   <div style={{ marginTop: "20px" }}>
                     <Typography gutterBottom variant="body1">
-                      {name.split(" ").splice(0, 2).join(" ")}
+                      {name?.split(" ").splice(0, 2).join(" ")}
                     </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subtitle2">
