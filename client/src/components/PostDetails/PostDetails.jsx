@@ -79,7 +79,7 @@ const PostDetails = () => {
   }
 
   const recommendedPosts = posts.filter(
-    ({ _id }, index) => _id !== post._id && index < 10
+    ({ _id }, index) => _id !== post._id && index < 9
   );
 
   const openPost = (_id) => history.push(`/posts/${_id}`);

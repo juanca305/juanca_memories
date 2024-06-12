@@ -13,7 +13,7 @@ import PostDetails from './components/PostDetails/PostDetails';
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
     return (
-        <GoogleOAuthProvider clientId="323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId = "323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com">
           <BrowserRouter>
             <Container maxWidth="xl">
               <Navbar />

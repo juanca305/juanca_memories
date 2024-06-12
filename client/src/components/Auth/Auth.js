@@ -33,8 +33,6 @@ const Auth = () => {
   const classes = useStyles();
   const state = null;
   const history = useHistory();
-  // const clientId =
-  //   "323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com";
 
   const handleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -42,7 +40,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("FORM_DATA", formData);
+    //console.log("FORM_DATA", formData);
 
     if (isSignup) {
       dispatch(signup(formData, history));
@@ -61,14 +59,16 @@ const Auth = () => {
   };
 
   const onSuccess = async (response) => {
-    console.log("RESPONSE FROM AUTH", response);
+    //console.log("RESPONSE FROM AUTH", response);
     //const result = await createOrGetUser(response);
 
     const token = await response.credential;
     const result = jwtDecode(response.credential);
-    console.log("RESULT FROM AUTH", result);
-    console.log("TOKEN FROM AUTH", token);
-    console.log("RESULT DATA FROM AUTH", result.given_name);
+
+    //console.log("RESULT FROM AUTH", result);
+    //console.log("TOKEN FROM AUTH", token);
+    //console.log("RESULT DATA FROM AUTH", result.given_name);
+
     //history.push('/');
 
     try {
