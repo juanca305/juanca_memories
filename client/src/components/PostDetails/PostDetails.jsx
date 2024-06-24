@@ -72,9 +72,9 @@ const PostDetails = () => {
 
   if (isLoading) {
     return (
-      <Paper elevation={6} className={classes.loadingPaper}>
+        <Paper elevation={6} className={classes.loadingPaper}>
         <CircularProgress size="7em" />
-      </Paper>
+      </Paper> 
     );
   }
 
@@ -91,8 +91,9 @@ const PostDetails = () => {
           <Typography variant="h5" component="h2">
             {post.title}
           </Typography>
-          <Divider style={{ margin: "14px 0" }} />
+          <Divider className="dark_divider" style={{ margin: "14px 0" }} />
           <Typography
+            className="dark_details"
             gutterBottom
             variant="body1"
             color="textSecondary"
@@ -117,9 +118,9 @@ const PostDetails = () => {
           <Typography variant="body2">
             {moment(post.createdAt).fromNow()}
           </Typography>
-          <Divider style={{ margin: "20px 0" }} />
+          <Divider className="dark_divider" style={{ margin: "20px 0" }} />
           <CommentSection post={post} />
-          <Divider style={{ margin: "20px 0" }} />
+          <Divider className="dark_divider" style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>
           <img
@@ -137,9 +138,9 @@ const PostDetails = () => {
       {recommendedPosts.length && (
         <div className={classes.section} style={{ marginTop: "30px" }}>
           <Typography gutterBottom variant="h6">
-            You might also like{" "}
+            You might also like{" "}:
           </Typography>
-          <Divider />
+          <Divider className="dark_divider" />
           <Grid
             className={classes.recommendedPosts}
             container
@@ -171,17 +172,17 @@ const PostDetails = () => {
                       {title.split(" ").splice(0, 2).join(" ")}...
                     </strong>
                   </Typography>
-                  <Divider />
+                  
                   <div style={{ marginTop: "20px" }}>
                     <Typography gutterBottom variant="body1">
                       {name?.split(" ").splice(0, 2).join(" ")}
                     </Typography>
-                    <Divider />
+                    
                     <Typography gutterBottom variant="subtitle2">
                       {message.split(" ").splice(0, 5).join(" ")}...
                     </Typography>
                     <Typography gutterBottom variant="subtitle2">
-                      likes: {likes.length}
+                      <span className="dark_likes">likes:</span> {likes.length}
                     </Typography>
                     <img src={selectedFile} width="200px" />
                   </div>

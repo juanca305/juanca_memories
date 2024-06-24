@@ -1,0 +1,171 @@
+.App {
+  font-family: "Ubuntu", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#light {
+  background-color: #f3ebf6;
+}
+#light .footer_styles {
+  background-color: inherit;
+}
+#light .navbar {
+  background-color: inherit;
+}
+
+#light .navbar_link {
+  color: #000;
+}
+
+#light .light_fontColor {
+  color: #000;
+}
+
+#light .navbar_link {
+  color: #000;
+  font-weight: bold;
+}
+
+#light .navbar_link a {
+  text-decoration: none;
+}
+
+#dark {
+  background-color: #000;
+  color: #fff;
+}
+
+#dark .navbar {
+  background-color: #333232;
+}
+
+#dark .navbar_link {
+  color: #fff;
+  text-decoration: none;
+}
+
+#dark .dark_background {
+  background-color: #504e4e;
+}
+
+#dark .dark_title {
+  color: #fff;
+}
+
+#dark .dark_details {
+  color: #a1ddf7;
+}
+
+#dark .dark_actions {
+  background-color: #ada9a9;
+  border: 1px solid #fff;
+}
+
+#dark .footer_styles {
+  background-color: #333232;
+
+}
+
+.actions_styles {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.styleActions {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#dark .dark_boxes {
+  background-color: #504e4e;
+  color: #fff;
+}
+
+.MuiContainer-root {
+  height: 100vh;
+}
+
+#dark .MuiInputBase-root {
+  background-color: #000;
+}
+
+#dark .dark_paginate {
+  color: #cbc4c4;
+}
+
+#dark .MuiPaper-root {
+  color: #fff;
+  background-color: #333232;
+}
+
+#dark .dark_postDetails {
+  background-color: #504e4e;
+  color: #fff;
+  border-radius: 15px;
+}
+
+#dark .MuiOutlinedInput-root {
+  color: #fff;
+}
+
+#dark .MuiInputLabel-outlined {
+  color: #848787;
+}
+
+#dark .MuiOutlinedInput-notchedOutline {
+  color: #2e2e2e;
+  font-weight: bold;
+}
+
+#dark .Mui-focused {
+  color: #a1ddf7;
+  font-weight: bold;
+}
+
+#dark .MuiOutlinedInput-notchedOutline {
+  border-color: #7d7a7a;
+  border-width: "1px";
+}
+
+#dark .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #a1ddf7;
+  border-width: "3px";
+}
+
+#dark .MuiPaginationItem-root {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+#dark .dark_divider {
+  background-color: #ada9a9;
+}
+
+#dark .dark_likes {
+  color: greenyellow;
+}
+
+#dark .signIn_styles {
+  color:#fff;
+}
+
+.switch {
+  display: flex;
+  justify-content: "space-between";
+  align-items: "center";
+}
+
+.switch_navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+

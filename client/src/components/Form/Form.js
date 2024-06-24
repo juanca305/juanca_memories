@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../actions/posts";
 
-
-
 //Get the current id of the Post we are on
 
 const Form = ({ currentId, setCurrentId }) => {
-  
-
-  const post = useSelector((state) => currentId ? state.posts.posts.find((p) => p._id === currentId) : null );
+  const post = useSelector((state) =>
+    currentId ? state.posts.posts.find((p) => p._id === currentId) : null
+  );
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -24,14 +22,13 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const classes = useStyles();
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
 
   useEffect(() => {
-     if (post) setPostData(post);
-    console.log('POST', post)
+    if (post) setPostData(post);
+    console.log("POST", post);
   }, [post]);
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,10 +38,11 @@ const Form = ({ currentId, setCurrentId }) => {
       //history.push(`/posts/${}`)
       clear();
     } else {
-      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name })
+      );
       clear();
     }
-    
   };
 
   const clear = () => {
@@ -59,24 +57,26 @@ const Form = ({ currentId, setCurrentId }) => {
 
   if (!user?.result?.name) {
     return (
-      <Paper className={classes.paper}>
+      <Paper className={`dark_boxes ${classes.paper}`}>
         <Typography variant="h6" align="center">
           Please Sign In to create your own memories and like other's memories.
         </Typography>
       </Paper>
-    )
+    );
   }
 
   return (
-    <Paper className={classes.paper} elevation={6}>
+    <Paper className={`dark_boxes ${classes.paper}`} elevation={6}>
       <form
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">{currentId ? 'Editing' : "Creating" } a Memory</Typography>
-       
+        <Typography variant="h6">
+          {currentId ? "Editing" : "Creating"} a Memory
+        </Typography>
+
         <TextField
           name="title"
           variant="outlined"
@@ -101,10 +101,13 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(",") })
+          }
         />
         <div className={classes.fileInput}>
           <FileBase
+            className="dark_filebase"
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
