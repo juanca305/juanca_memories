@@ -67,7 +67,7 @@ const Navbar = () => {
             align="center"
           >
             Memories <br />
-            <p style={{ fontSize: "14px", color: "#ada9a9" }}>by: Juanca (07/2024)</p>
+            <p style={{ fontSize: "14px", color: "#ada9a9" }}>by: Juanca (06/2024)</p>
           </Typography>
 
           {/* <img src={memoriesText} alt="icon" height='45px'/> */}
