@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Auth from "./components/Auth/Auth";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
+
+
 import PostDetails from "./components/PostDetails/PostDetails";
 
 
@@ -17,6 +19,9 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const [theme, setTheme] = useState("light");
 
+  //const client_Id = process.env.GOOGLE_PROVIDER_CLIENTID_KEY;
+  
+
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
@@ -24,7 +29,8 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
-        <GoogleOAuthProvider clientId="323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId ="323739031581-dqje8qatfvboljlohila29q8f8u71fl2.apps.googleusercontent.com">
+         
           <BrowserRouter>
             <Container maxWidth="xl">
               <Navbar />
