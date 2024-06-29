@@ -36,7 +36,8 @@ const Navbar = () => {
   //console.log("USER FROM LOCALSTORAGE", user);
 
   const logout = () => {
-    dispatch({ type: "LOGOUT" });
+    //dispatch({ type: "LOGOUT" });
+    dispatch({ type: actionType.LOGOUT });
     history.push("/auth");
     window.location.reload();
     setUser(null);
