@@ -1,7 +1,7 @@
 import axios from "axios";
 
-///const API = axios.create({ baseURL: "https://juanca-memories.onrender.com" });
-const API = axios.create({ baseURL: "http://localhost:3000" });
+const API = axios.create({ baseURL: "https://juanca-memories.onrender.com" });
+//const API = axios.create({ baseURL: "http://localhost:3000" });
 
 //Something specific to each one of our requests.
 //Send the token to the backend. The backend can verify that the user is logged in.
